@@ -11,7 +11,7 @@
         <li  class=" nav-item ">
           <a  class="nav-link   " aria-current="page" href=" {% url 'cproduct' %}">{% trans 'Crear Producto' %} </a>
         </li>
-        <li  class="nav-item ">
+        {% comment %} <li  class="nav-item ">
           <a  class="nav-link  " href=" {% url 'seller' %}">{% trans 'Crear Vendedor' %} </a>
         </li>
         <li  class="nav-item ">
@@ -22,7 +22,7 @@
         </li>
         <li  class="nav-item ">
           <a class="nav-link  " href=" {% url 'seller_product' %}" >{% trans 'Relación Vendedor&Producto' %}  </a>
-        </li>
+        </li> {% endcomment %}
         </ul>
         <div class="col-lg-4 col-sm-6 col-8 " >
           
@@ -45,8 +45,8 @@
            
               </span>
             <div class="item_auth"> 
-              <a href="{% url 'dashboard' %}">{% trans 'Tablero' %}</a> <span class="text-white"> | </span>   
-              <a href=" {% url 'logout' %}">{% trans 'Cerrar Sesión' %}</a>
+              {% comment %} <a href="{% url 'dashboard' %}">{% trans 'Tablero' %}</a> <span class="text-white"> | </span>   
+              <a href=" {% url 'logout' %}">{% trans 'Cerrar Sesión' %}</a> {% endcomment %}
             </div>
           </div>
           {% endif %}
