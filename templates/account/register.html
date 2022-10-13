@@ -1,0 +1,67 @@
+{% extends 'home.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans 'Registrar' %}{% endblock  %}
+{% block content %}
+    
+<section class="section-conten padding" style="min-height:84vh">
+ 
+  <!-- ============================ COMPONENT REGISTER   ================================= -->
+      <div class="card_register mx-auto" style="max-width:520px; margin-top:10px;">
+       
+        <article class="card_body">
+            {% include 'layout/alert.html' %}
+          <header class="mb-4"><h4 class="card_title">{% trans 'Registrar Usuario' %} </h4></header>
+          <form action=" {% url 'register' %}" method="POST">
+            {% comment %} ENVIAR DATA POR POST {% endcomment %}
+           
+                {% csrf_token %}
+                  <div class="form-row">
+                      <div class="col form-group">
+                          <label>{% trans 'Nombre' %} </label>
+                          {{registerForm.first_name}}
+                      </div> <!-- form-group end.// -->
+                      <div class="col form-group">
+                          <label> {% trans 'Apellido' %}</label>
+                          {{registerForm.last_name}}
+                      </div> <!-- form-group end.// -->
+                  </div> <!-- form-row end.// -->
+                 
+                  <div class="form-row">
+                  
+                    <div class="col form-group">
+                        <label> {% trans 'Email' %}</label>
+                        {{registerForm.email}}
+                    </div> <!-- form-group end.// -->
+                </div> <!-- form-row end.// -->
+               
+                   
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                          <label>{% trans 'Crear Contraseña' %}</label>
+                          {{registerForm.password}}
+                        </div> <!-- form-group end.// --> 
+                      <div class="form-group col-md-6">
+                          <label>{% trans 'Repetir Contraseña' %}</label>
+                          {{registerForm.confirm_password}}
+                      </div> <!-- form-group end.// -->  
+                  </div>
+                  <div class="form-group ">
+                      <button type="submit" class="btn btn-primary w-100 btn-block"> {% trans 'Registrar' %}  </button>
+                  </div> <!-- form-group// -->  
+                  <div style="color:white;">{{registerForm.email.errors}}</div>    
+
+                  
+                  <div style="color:white;">{{registerForm.non_field_errors}}</div>    
+                      
+              </form>
+              <p class="text-center text-white mt-2">{% trans '¿Tienes una cuenta?' %}  <a href=" {% url 'login' %}">{% trans 'Iniciar Sesión' %}</a></p>
+
+          </article><!-- card-body.// -->
+      </div> <!-- card .// -->
+      <br><br>
+  <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+  
+  
+  </section>
+            {% endblock %}

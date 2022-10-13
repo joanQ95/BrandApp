@@ -1,0 +1,86 @@
+{% load static %}
+{% load i18n %}
+ <nav  class=" bg-patter  navbar navbar-expand-lg border-bottom">
+  <div class="  container-fluid">
+    <a class="navbar-brand " href="{% url 'payment' %}"><img  src=" {% static 'img/isologo.png' %}" width="150" height="50"/></a>
+    <button class="navbar-toggler bg-gradient-pink" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav">
+           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li  class=" nav-item ">
+          <a  class="nav-link   " aria-current="page" href=" {% url 'cproduct' %}">{% trans 'Crear Producto' %} </a>
+        </li>
+        <li  class="nav-item ">
+          <a  class="nav-link  " href=" {% url 'seller' %}">{% trans 'Crear Vendedor' %} </a>
+        </li>
+        <li  class="nav-item ">
+          <a class="nav-link  " href=" {% url 'product_list' %}">{% trans 'Listar Productos' %}</a>
+        </li>
+        <li  class="nav-item ">
+          <a class="nav-link  " href=" {% url 'seller_list' %}" >{% trans 'Listar Vendedores' %}</a>
+        </li>
+        <li  class="nav-item ">
+          <a class="nav-link  " href=" {% url 'seller_product' %}" >{% trans 'Relación Vendedor&Producto' %}  </a>
+        </li>
+        </ul>
+        <div class="col-lg-4 col-sm-6 col-8 " >
+          
+          {% if user.id is None %}
+            
+         
+            
+          <div class="auth_header">
+            <span class="" style="color:#41F28E !important;">{% trans 'Bienvenido visitante!' %}</span>
+            <div class="item_auth"> 
+              <a href=" {% url 'login' %}">{% trans 'Iniciar Sesión' %}</a> <span class="text-white"> | </span>   
+              <a href=" {% url 'register' %}"> {% trans 'Registrarse' %}</a>
+            </div>
+          </div>
+          {% else %}
+          <div class="auth_header">
+            <span class="" style="color:#41F28E !important;">
+            
+            {% trans 'Bienvenido' %} {{user.first_name}}
+           
+              </span>
+            <div class="item_auth"> 
+              <a href="{% url 'dashboard' %}">{% trans 'Tablero' %}</a> <span class="text-white"> | </span>   
+              <a href=" {% url 'logout' %}">{% trans 'Cerrar Sesión' %}</a>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+        
+         
+      </ul>
+     
+    
+  </div>
+ 
+  
+     
+      
+        
+        <form   action="/i18n/setlang/" method="post"  >
+          {% csrf_token %}
+          <div style="padding-right:1rem !important;">
+          <select style="font-family:amstrong !important;  cursor:pointer !important; height:39px !important" class=" bg-primary  text-white form-select dropdown" name="language" onchange="javascript:form.submit()">
+              {% get_current_language as LANGUAGE_CODE %}
+              {% get_available_languages as LANGUAGES %}
+              {% for lang in LANGUAGES %}
+                  <option class="fs-6 " value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                       {{ lang.1 }}
+                  </option>
+              {% endfor %}
+          </select>
+        </div>
+              </form>
+      
+       
+    
+  
+     
+  
+
+</nav> 

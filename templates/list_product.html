@@ -1,0 +1,48 @@
+{% extends './home.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans 'Listar Productos' %}{% endblock  %}
+{% block content %}
+<div class="  "> 
+        <table style="overflow-wrap: normal !important;"  class="table table-bordered ">
+           
+          <thead class="bg-black text-white" style="font-family:amstrong !important;">
+            
+              <tr>
+              
+                <th scope="col">{% trans 'Título' %} </th>
+                <th scope="col">{% trans 'Marca' %} </th>
+                <th scope="col" >{% trans 'Precio' %} </th>
+                <th scope="col">{% trans 'Descuento' %} </th>
+        
+              </tr>
+            </thead>
+          <tbody class=" text-black" style="background:rgb(242, 242, 242) !important; font-family:amstrong !important;" >  
+            {% for cproduct  in product  %}
+            <tr>
+              
+                <th scope="row">{{cproduct.title}}</th>
+                <td>{{cproduct.brand}}</td>
+                <td>{{cproduct.pvp}}</td>
+                <td>{{cproduct.discount}}</td>
+               
+                <td> 
+                  <div class=" text-center">
+                  <a class="w-25  btn btn-danger" href="{% url 'delete_product' cproduct.id %}">
+                      Borrar
+                    </a>
+               
+                  
+                    <a class="w-25 btn btn-primary" href="{% url 'editar_product' cproduct.id %}">
+                      Editar
+                    </a>
+                  </div>
+              </td>
+              
+            </tr>
+            {% endfor %}
+        </tbody>
+       
+        </table>
+    </div>
+{% endblock  %}

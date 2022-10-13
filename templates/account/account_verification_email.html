@@ -1,0 +1,13 @@
+{% load i18n %}
+{% load static %}
+{% autoescape off %}
+    
+{% trans 'Hola' %}  {{user.first_name}},
+
+{% trans 'Por favor activa tu cuenta dando click en el siguiente link:' %} 
+
+http://{{domain}}{% url 'activate' uidb64=uid token=token %}
+   
+{% trans 'Saludos. BrandProteccion' %}
+
+{% endautoescape %} 

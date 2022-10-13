@@ -1,0 +1,36 @@
+{% extends './home.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans 'Listar Vendedores' %}{% endblock  %}
+{% block content %}
+      <div >
+        <table style="overflow-wrap: normal !important;"  class="table table-bordered " >
+            <thead class="bg-black text-white" style="font-family:amstrong !important;">
+            <tr>
+                
+                <th >{% trans 'Nombre' %} </th>
+                <th>{% trans 'Teléfono' %} </th>
+                <th >{% trans 'Email' %}  </th>
+            </tr>
+        </thead>
+        <tbody class=" text-black" style="background:rgb(242, 242, 242) !important; font-family:amstrong !important;">
+            {% for vendor  in seller_obj %}    
+            <tr>
+                
+                <td >{{vendor.nickname}}</td>
+                <td>{{vendor.phone}}</td>
+                <td>{{vendor.email}}</td>
+                <td> 
+                    <div class="text-center">
+                    <a  class="w-50 btn btn-danger" href="{% url 'delete_seller' vendor.id %}">
+                        Borrar
+                      </a>
+                    </div>
+                </td>
+            </tr>
+            {%endfor %}
+        </tbody>
+       
+        </table>
+    </div>
+{% endblock  %}

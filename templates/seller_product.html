@@ -1,0 +1,55 @@
+{% extends './home.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans 'Relación' %}{% endblock  %}
+{% block content %}
+ <div class=" overflow-scroll "> 
+        <table   class=" table table-bordered ">
+           
+          <thead class="bg-black text-white" style="font-family:amstrong !important;">
+            
+              <tr>
+                
+                <th scope="col">Producto</th>
+                <th scope="col" >Precio</th>
+                <th scope="col">Descuento </th>
+                <th scope="col">Vendedor</th>
+                <th scope="col">Email</th>
+                <th scope="col">Código Producto(API)</th>
+                   
+              </tr>
+            </thead>
+          <tbody class=" text-black" style="background:rgb(242, 242, 242) !important; font-family:amstrong !important;" >  
+            {% for cproduct  in product  %}
+            <tr>
+                <th  scope="row">{{cproduct.title}}</th>
+                <td>{{cproduct.pvp}}</td>
+                <td>{{cproduct.discount}}</td>
+                <td>{{cproduct.nickname}}</td>
+                <td>{{cproduct.email}}</td>
+                {% comment %} <td>{{cproduct.product_id}}</td> {% endcomment %}
+                
+                <td> 
+                    <a class="btn btn-primary" href="#">
+                        Editar
+                      </a>
+                </td>
+                <td> 
+                    <a class="btn btn-danger" href="#">
+                        Borrar
+                      </a>
+                </td>
+                <td> 
+                    <a class="btn btn-info" href="#">
+                        Actualizar
+                      </a>
+                </td>
+                 
+                 
+            </tr>
+            {% endfor %}
+        </tbody>
+       
+        </table>
+    </div>
+{% endblock  %}

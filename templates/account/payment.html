@@ -1,0 +1,57 @@
+{% extends 'home.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans 'Pagar' %} {% endblock  %}
+
+{% block content %}
+
+
+
+<script src="https://www.paypal.com/sdk/js?client-id=AZKKO6Cy74DAh_JffATkRn5Qq725dPynQL8awlZ54eb9vkJY60jkdPMWozzGrGi-NQLwYkZk-xi2l2nX&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+<script>
+  paypal.Buttons({
+      style: {
+          shape: 'rect',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'subscribe'
+      },
+      createSubscription: function(data, actions) {
+        return actions.subscription.create({
+          /* Creates the subscription */
+          plan_id: 'P-444555740K721735TMM3ZEFY'
+        });
+      },
+      onApprove: function(data, actions) {
+        alert(data.subscriptionID); // You can add optional success message for the subscriber here
+      }
+  }).render('#paypal-button-container-P-444555740K721735TMM3ZEFY'); // Renders the PayPal button
+</script>
+
+<aside style="position:absolute !important; left:-7rem !important;" class="  container pt-5 row justify-content-end ">
+  <div class="card col-md-4 " >
+<div class="card-body  text-center">
+  <dl class="dlist-align">
+    <dt class="fs-4" style="font-family:amstrong !important;">{% trans 'Precio Total:' %}  </dt>
+    <dd class="text-right fs-4" style="font-family:amstrong !important;"><strong>50 USD</strong></dd>
+  </dl>
+  <hr>
+  <dl class="dlist-align">
+    <dt class="text-right fs-4" style="font-family:amstrong !important;">{% trans 'Descripción:' %}</dt>
+    <dd class="text-right  fs-4" style="font-family:amstrong !important;"><strong>{% trans 'Sitio Web' %}</strong></dd>
+  </dl>
+  <hr>
+  <p class="text-center mb-3">
+    <img class=" " src=" {% static 'img/payments.png' %} " height="26">
+  </p>
+    
+  <div id="paypal-button-container-P-444555740K721735TMM3ZEFY"></div>
+</div> <!-- card-body.// -->
+</div> <!-- card.// -->
+<img class="d-inline " src="{% static 'img/psecure.png' %}"  alt="card" style="height:300px !important;  width:350px !important;">
+
+</aside> <!-- col.// -->
+{% endblock %}
+
+
+

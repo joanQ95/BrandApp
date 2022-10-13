@@ -1,0 +1,79 @@
+{% extends './home.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans 'Crear Vendedor' %}{% endblock %}
+{% block content %}
+
+
+    {% comment %} <div class='container  w-50 mt-3'>
+        <form class="text-white "  method="POST">
+
+            {{sellerForm.as_p}}
+            <input class="send mt-3 form-control" type="submit" value="Submit"/>
+            {% csrf_token %}
+        </form>
+    </div> {% endcomment %}
+    <section class="" style="">
+ 
+        <!-- ============================ COMPONENT REGISTER   ================================= -->
+            <div class="  mx-auto" style="max-width:1000px; margin-top:20px;">
+             
+              <article class="bg-black" style="flex: 1 1 auto;
+              padding: 1.25rem;" >
+              {% include 'layout/alert.html' %}
+                <header class="mb-4"><h4 class="card_title">{% trans "Crear Vendedor" %}</h4></header>
+                <form action=" {% url 'seller' %}" method="POST">
+                  {% comment %} ENVIAR DATA POR POST {% endcomment %}
+                 
+                      {% csrf_token %}
+                        <div class="">
+                          
+                            <div class=" form-group">
+                                <label>{% trans "Supervisor" %}</label>
+                                <div style="" class="">
+                                    {{sellerForm.supervisor}}
+                                </div>
+                            </div> <!-- form-group end.// -->
+                            <div class=" form-group">
+                                <label>{% trans "Nombre u Apodo del vendedor" %}</label>
+                                {{sellerForm.nickname}}
+                            </div> <!-- form-group end.// -->
+                         
+                            <div class=" form-group">
+                                <label>{% trans "Cód. Producto Asociado" %}</label>
+                                <div >
+                                {{sellerForm.products_id}}
+                                </div>
+                            </div>
+                            <div class=" form-group">
+                                <label>{% trans "Teléfono" %}</label>
+                                {{sellerForm.phone}}
+                            </div> <!-- form-group end.// -->
+                        </div> <!-- form-row end.// -->
+                       
+                        <div class="form-row">
+                          <div class="col form-group">
+                              <label>{% trans "Email" %}</label>
+                              {{sellerForm.email}}
+                          </div> <!-- form-group end.// -->
+                          
+                      </div> <!-- form-row end.// -->
+                     
+                         
+                     
+                        <div class="form-group ">
+                            <button type="submit" class="btn btn-primary w-100 btn-block"> {% trans "Crear" %}  </button>
+                        </div> <!-- form-group// -->  
+                        {% comment %} <div style="color:white;">{{registerForm.email.errors}}</div>      
+                        <div style="color:white;">{{registerForm.non_field_errors}}</div>     {% endcomment %}
+                            
+                    </form>
+      
+                </article><!-- card-body.// -->
+            </div> <!-- card .// -->
+            <br><br>
+        <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+        
+        
+        </section>
+{% endblock  %}

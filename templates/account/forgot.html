@@ -1,0 +1,50 @@
+{% extends 'home.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans 'Olvidaste Contraseña' %}{% endblock  %}
+{% block content %}
+<section class="section-conten padding" style="">
+{% comment %} obtengo desde la url el parámetro command {% endcomment %}
+
+
+
+        <!-- ============================ COMPONENT LOGIN   ================================= -->
+            <div class="card_register mx-auto" style="max-width: 380px; margin-top:50px;">
+               
+                <div class="card_body">
+                    {% include 'layout/alert.html' %}
+              <h4 class="card_title mb-4">{% trans 'Recuperar Contraseña' %}</h4>
+              <form action="{% url 'forgot' %}" method="POST">
+                {% csrf_token %}
+                  <div class="form-group">
+                     <input type="email" class="form-control" placeholder="Email" name="email">
+                  </div> <!-- form-group// -->
+               
+                  
+                  <div class="form-group">
+                      <a href="{% url 'login' %}" style="text-decoration:none !important;" class="float-right">{% trans '¿Ya tienes tu contraseña? Iniciar sesión' %}</a> 
+                   
+                  </div> <!-- form-group form-check .// -->
+                  <div class="form-group ">
+                      <button type="submit" class="btn btn-primary w-100 btn-block"> {% trans 'Enviar' %}  </button>
+                    </div> <!-- form-group// -->    
+              </form>
+              <p class="text-center text-white ">{% trans '¿No tienes una cuenta?' %} <a href="{% url 'register' %}">{% trans 'Registrate' %}</a></p>
+
+              </div> <!-- card-body.// -->
+            </div> <!-- card .// -->
+        
+            
+             <br><br>
+        <!-- ============================ COMPONENT LOGIN  END.// ================================= -->
+         
+        
+        </section>
+
+    
+
+          
+   
+
+        
+            {% endblock %}

@@ -1,0 +1,67 @@
+{% extends './home.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans 'Crear Producto' %}{% endblock  %}
+{% block content %}
+      
+            <section class="" style="">
+ 
+                <!-- ============================ COMPONENT REGISTER   ================================= -->
+                    <div class="  mx-auto" style="max-width:1000px; margin-top:20px;">
+                     
+                      <article class="bg-black" style="flex: 1 1 auto;
+                      padding: 1.25rem;" >
+                          {% include 'layout/alert.html' %}
+                        <header class="mb-4"><h4 class="card_title">{% trans "Crear Producto" %}</h4></header>
+                        <form action=" {% url 'cproduct' %}" method="POST">
+                        
+                              {% csrf_token %}
+                             
+                                <div class="">
+                                    <div class=" form-group">
+                                     
+                                        <label>{% trans "Supervisor" %}</label>
+                                        <div>
+                                            {{productForm.supervisor}}
+                                        </div>
+                                    </div> <!-- form-group end.// -->
+                                    <div class=" form-group">
+                                        <label>{% trans "Título" %}</label>
+                                        {{productForm.title}}
+                                    </div> <!-- form-group end.// -->
+                                    <div class=" form-group">
+                                        <label>{% trans "Marca" %}</label>
+                                        {{productForm.brand}}
+                                    </div> <!-- form-group end.// -->
+                                    <!-- form-group end.// -->
+                                </div> <!-- form-row end.// -->
+                               
+                                <div class="form-row">
+                                  <div class="col form-group">
+                                      <label>{% trans "Precio" %}</label>
+                                      {{productForm.pvp}}
+                                  </div> <!-- form-group end.// -->
+                                  <div class="col form-group">
+                                      <label>{% trans "Descuento" %} </label>
+                                      {{productForm.discount}}
+                                  </div> <!-- form-group end.// -->
+                              </div> <!-- form-row end.// -->
+                             
+                                 
+                             
+                                <div class="form-group ">
+                                    <button type="submit" class="btn btn-primary w-100 btn-block"> {% trans "Crear" %}  </button>
+                                </div> <!-- form-group// -->  
+                                {% comment %} <div style="color:white;">{{registerForm.email.errors}}</div>      
+                                <div style="color:white;">{{registerForm.non_field_errors}}</div>     {% endcomment %}
+                                    
+                            </form>
+              
+                        </article><!-- card-body.// -->
+                    </div> <!-- card .// -->
+                    <br><br>
+                <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+                
+                
+                </section>
+{% endblock  %}
